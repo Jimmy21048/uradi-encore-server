@@ -59,7 +59,6 @@ router.post('/', (req, res) => {
         if(pwdMatch) {
 
             const accessToken = sign({fname: result[0].user_fname, lname: result[0].user_lname, id: result[0].user_id}, "myToken");
-            req.session.authenticated = true;
             return res.json(accessToken);
         } else {
             return res.json({error: "Incorrect email or password"});
@@ -71,4 +70,3 @@ router.get('/auth', validateToken, (req, res) => {
 })
 
 module.exports = router;
-// module.exports = login;
