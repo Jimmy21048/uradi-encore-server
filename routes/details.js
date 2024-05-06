@@ -5,9 +5,9 @@ const conn = require('../config');
 const router = express.Router();
 
 router.get('/room', validateToken, (req, res) => {
-    const query = "SELECT book_id, book_from, book_to, book_status FROM bookings WHERE book_type = ? AND book_status = ?";
+    const query = "SELECT book_id, book_from, book_to, book_status FROM bookings WHERE book_type = ?";
     const roomDetails = req.roomType;
-    const values = [roomDetails.type, 1];
+    const values = [roomDetails.type];
 
     conn.query(query, values, (err, results) => {
         if(err) {
