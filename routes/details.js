@@ -19,10 +19,9 @@ router.get('/room', validateToken, (req, res) => {
             for(let i=0; i<results.length; i++) {
                 if(roomDetails.leave < results[i].book_from || roomDetails.arrive > results[i].book_to) {
                     return res.json("Room available");
-                } else {
-                    return res.json("Room already booked for the above dates")
                 }
             }
+            return res.json("Room already booked for the above dates");
         } else {
             return res.json("Room available");
         }

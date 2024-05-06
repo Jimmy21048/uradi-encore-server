@@ -63,7 +63,11 @@ router.get('/', validateToken, (req, res) => {
                 console.log(err);
                 return res.send("Could not complete operation");
             }
-            
+
+            const initials = result1[0].user_fname[0].toUpperCase() + result1[0].user_lname[0].toUpperCase();
+            result1[0].initials = initials;
+            result1[0].user_fname = result1[0].user_fname.toUpperCase();
+            result1[0].user_lname = result1[0].user_lname.toUpperCase();
             res.json({user: result1, userData: result});
         })
         
