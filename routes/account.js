@@ -22,9 +22,6 @@ router.post('/', validateToken, (req, res) => {
         const arrive = new Date(data.arrive).getTime();
         const today = new Date().getTime();
         const leave = new Date(data.leave).getTime();
-
-        console.log(today, arrive, leave);
-        console.log(arrive > leave);
         
         if(arrive < today) {
             return res.json({message: `CheckIn date should be after or today(${new Date().toLocaleDateString()})`});
