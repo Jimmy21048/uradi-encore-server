@@ -25,6 +25,9 @@ app.use('/account', accountRouter);
 const detailsRouter = require('./routes/details');
 app.use('/details', detailsRouter);
 
+const foodsRouter = require('./routes/foods');
+app.use('/foods', foodsRouter);
+
 conn.connect((err) => {
     if(err) {
         console.log("Could not connect "+ err); 
