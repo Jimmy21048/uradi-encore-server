@@ -18,12 +18,13 @@ router.post('/', validateToken, (req, res) => {
         if(result.length >= 3) {
             return res.json({message: "You can only have a maximum of three bookings"});
         }
-        const arrive = new Date(data.arrive).getTime();
-        const today = new Date().getTime();
-        const leave = new Date(data.leave).getTime();
+        const arrive = new Date(data.arrive).setHours(0,0, 0, 0);
+        const today = new Date().setHours(0, 0, 0, 0);
+        const leave = new Date(data.leave).setHours(23, 50, 0, 0);
 
-        
-        if(arrive < today && (today - arrive) / (1000 * 60 * 60) >= 22) {
+
+
+        if(arrive < today ) {
             //>=22 allows the hotel 2 hours to prepare the room for another book
             return res.json({message: `CheckIn date should be after or today(${new Date().toLocaleDateString()})`});
         }
@@ -46,7 +47,7 @@ router.post('/', validateToken, (req, res) => {
 })
 router.get('/', validateToken, (req, res) => {
 
-    const query = "SELECT book_id, book_type, book_from, book_to, book_people, book_days FROM bookings2 WHERE user_id = ?";
+    const query = "SELECT book_id, book_type, book_from, book_to, book_people, book_days, room_no FROM bookings2 WHERE user_id = ?";
     const values = [req.user.id];
 
     conn.query(query, values, (err, result) => {

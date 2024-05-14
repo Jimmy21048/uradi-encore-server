@@ -34,7 +34,7 @@ conn.connect((err) => {
         return;
     }
     console.log("DB up and running");
-    app.listen(3000 , () => {
+    app.listen(3001 , () => {
         console.log("As I live and breath! Server running");
     })
 })
