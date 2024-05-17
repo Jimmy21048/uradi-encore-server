@@ -67,8 +67,10 @@ router.post('/', (req, res) => {
 })
 router.get('/auth', validateToken, (req, res) => {
     res.json({
-        fname: req.user.fname[0].toUpperCase(),
-        lname: req.user.lname[0].toUpperCase()
+        fname: req.user.fname,
+        lname: req.user.lname,
+        fnameI: req.user.fname[0].toUpperCase(),
+        lnameI: req.user.lname[0].toUpperCase()
     });
 
 })
