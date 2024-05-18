@@ -6,7 +6,9 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://uradi-encore-server.onrender.com'
+}));
 
 app.use(express.json());
 
