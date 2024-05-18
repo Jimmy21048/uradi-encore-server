@@ -10,6 +10,15 @@ app.use(cors({
     origin: 'https://uradi-encore-server.onrender.com'
 }));
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://uradi-encore-server.onrender.com");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+      );
+      next();
+})
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
