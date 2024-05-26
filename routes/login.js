@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
 
         if(pwdMatch) {
 
-            const accessToken = sign({fname: result[0].user_fname, lname: result[0].user_lname, id: result[0].user_id}, "myToken");
+            const accessToken = sign({fname: result[0].user_fname, lname: result[0].user_lname, id: result[0].user_id}, "myToken", {expiresIn: 1800});
             return res.json(accessToken);
         } else {
             return res.json({error: "Incorrect email or password"});
