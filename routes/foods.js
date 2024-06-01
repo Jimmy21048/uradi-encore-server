@@ -31,7 +31,7 @@ router.post('/order', validateToken, (req, res) => {
             return res.json("Could not complete operation");
         }
 
-        // res.json("request succesful");
+        res.json("request succesful");
     })
 
 
