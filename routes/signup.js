@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
             let transporter = nodemailer.createTransport({
                 service: 'smtp-relay.brevo.com',
                 port: 597,
+                secure: false,
                 auth: {
                     user: '75ea12001@smtp-brevo.com',
                     pass: 'dDTmhn1jzS3r4xFb'
@@ -40,7 +41,7 @@ router.post('/', (req, res) => {
 
             let mailOptions = {
                 from: 'uradiencore@gmail.com',
-                to: `${userData.email}`,
+                to: userData.email,
                 subject: 'Welcome to Uradi Encore Hotel & Resort',
                 text: `Dear ${userData.fname}, you have succesfully created an account with us. Enjoy our services. For any inquiries, contact us on 0113951657 or the email`
             }
