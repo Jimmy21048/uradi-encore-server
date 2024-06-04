@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
             }
             let transporter = nodemailer.createTransport({
                 service: 'smtp-relay.brevo.com',
-                port: 597,
+                port: 587,
                 secure: false,
                 auth: {
                     user: '75ea12001@smtp-brevo.com',
