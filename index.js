@@ -8,7 +8,6 @@ const app = express();
 
 app.use(cors({
     // origin: 'https://uradi-encore-server.onrender.com'
-    // origin: "*"
 }));
 
 app.use((req, res, next) => {
