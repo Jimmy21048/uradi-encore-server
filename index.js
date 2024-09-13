@@ -6,6 +6,9 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 
+app.use(cors({
+    origin: "https://uradi-encore-hotel.vercel.app"
+}))
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.header(
