@@ -1,13 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const session = require('express-session');
 const conn = require('./config');
-const bcrypt = require('bcryptjs');
 
 const app = express();
 
 app.use(cors({
     origin: "https://uradi-encore-hotel.vercel.app"
+    // origin: "http://localhost:3000"
 }))
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -44,7 +43,7 @@ conn.connect((err) => {
         return;
     }
     console.log("DB up and running");
-    app.listen(3000 , () => {
+    app.listen(3001 , () => {
         console.log("As I live and breath! Server running");
     })
 })
