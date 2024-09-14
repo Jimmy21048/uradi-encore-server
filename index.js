@@ -44,7 +44,7 @@ conn.connect((err) => {
         return;
     }
     console.log("DB up and running");
-    app.listen(process.env.SERVER_PORT , () => {
+    app.listen(process.env.SERVER_PORT || 3000 , () => {
         console.log("As I live and breath! Server running");
     })
 })
