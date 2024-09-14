@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const conn = require('./config');
+require('dotenv').config();
 
 const app = express();
 
@@ -43,7 +44,7 @@ conn.connect((err) => {
         return;
     }
     console.log("DB up and running");
-    app.listen(3001 , () => {
+    app.listen(process.env.SERVER_PORT , () => {
         console.log("As I live and breath! Server running");
     })
 })
