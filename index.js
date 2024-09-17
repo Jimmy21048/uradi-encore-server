@@ -6,8 +6,8 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-    origin: "https://uradi-encore-hotel.vercel.app"
-    // origin: "http://localhost:3000"
+    // origin: "https://uradi-encore-hotel.vercel.app"
+    origin: "http://localhost:3000"
 }))
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -38,14 +38,25 @@ app.use('/details', detailsRouter);
 const foodsRouter = require('./routes/foods');
 app.use('/foods', foodsRouter);
 
+const pwdRouter = require('./routes/changepassword');
+app.use('/changepassword', pwdRouter);
+
+const sendMail = require('./routes/forgotpassword');
+app.use('/forgotpassword', sendMail);
+
 conn.connect((err) => {
     if(err) {
         console.log("Could not connect "+ err); 
         return;
     }
     console.log("DB up and running");
-    app.listen(process.env.SERVER_PORT || 3000 , () => {
+    app.listen(process.env.SERVER_PORT || 3000 , (err) => {
+        if(err) {
+            console.log(err);
+        }
         console.log("As I live and breath! Server running");
     })
 })
+
+
 
