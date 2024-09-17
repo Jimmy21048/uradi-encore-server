@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 router.post('/', (req, res) => {
-    console.log(req.body)
     const data = req.body;
     let transporter = nodemailer.createTransport({
         host: 'smtp-relay.brevo.com',
