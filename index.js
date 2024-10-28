@@ -6,17 +6,11 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-    origin: "https://uradi-encore-hotel.vercel.app"
+    origin: "https://uradi-encore-hotel.vercel.app",
     // origin: "http://localhost:3000"
+    allowedHeaders : ["Origin", "X-Requested-With", "Content-Type", "Accept",
+        "accessToken", "roomType", "arrive", "leave"]
 }))
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, accessToken, roomType, arrive, leave"
-      );
-      next();
-})
 
 app.use(express.json());
 
